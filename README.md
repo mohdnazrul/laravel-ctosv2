@@ -287,7 +287,7 @@ $responseEnqReport =  The parameter must come from CTOSV2::getResponseEnqReport(
    ],
    'aliases' => [
       .
-      'CBMApi' => MohdNazrul\CTOSV2Laravel\CTOSApiFacade::class,
+      'CTOSV2' => MohdNazrul\CTOSV2Laravel\CTOSApiFacade::class,
       '
     ],
 ``` 
