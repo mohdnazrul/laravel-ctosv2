@@ -1,4 +1,4 @@
-#CTOS API Package (Version 2)
+# CTOS API Package (Version 2)
 
 This Library allows to query the CTOS  - B2B API for registered users. 
 
