@@ -25,9 +25,15 @@ class CTOSApi
         $this->serviceURL = $serviceUrl;
     }
 
-    public function generateXMLFromArray($dataArray, $XMLEscape = true)
+    public function generateXMLFromArray($dataArray, $method, $XMLEscape = true)
     {
-        $xmlString = '<batch output="0" no="0009" xmlns="http://ws.cmctos.com.my/ctosnet/request">';
+        if($method == 'request' || $method == 'requestLite' ){
+            $namespace = 'request';
+        } else {
+            $namespace = $method;
+        }
+
+        $xmlString = '<batch output="0" no="0009" xmlns="http://ws.cmctos.com.my/ctosnet/'.$namespace.'">';
 
         foreach ($dataArray as $key => $value) {
             if ($key == 'records') {
@@ -81,7 +87,7 @@ class CTOSApi
 
         }
         $xmlString .= '</batch>';
-
+        
         if ($XMLEscape) {
             $escape = htmlspecialchars($xmlString, ENT_QUOTES, 'UTF-8');
         } else {
