@@ -71,16 +71,7 @@ class CTOSApi
                     }
                 }
                 $xmlString .= "</$key>";
-            } else {
-                if (!empty($value)) {
-                    $xmlString .= "<$key>$value</$key>";
-                } else {
-                    $xmlString .= "<$key/>";
-                }
-
-            }
-
-            if ($key == 'records2') {
+            } elseif($key == 'records2') {
                 $key = 'records';
                 $xmlString .= "<$key>";
                 foreach ($value as $key2 => $innerValue) {
@@ -116,7 +107,8 @@ class CTOSApi
                     }
                 }
                 $xmlString .= "</$key>";
-            } else {
+            }
+            else {
                 if (!empty($value)) {
                     $xmlString .= "<$key>$value</$key>";
                 } else {
@@ -124,6 +116,8 @@ class CTOSApi
                 }
 
             }
+
+
 
             if ($key == 'InterestParties') {
                 $xmlString .= "<$key>";
