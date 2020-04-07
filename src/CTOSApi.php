@@ -80,6 +80,51 @@ class CTOSApi
 
             }
 
+            if ($key == 'records2') {
+                $key = 'records';
+                $xmlString .= "<$key>";
+                foreach ($value as $key2 => $innerValue) {
+                    if (!empty($innerValue)) {
+
+                        if ($key2 == 'type') {
+                            if($innerValue == 'C') {
+                                $xmlString .= "<$key2 code='24'>$innerValue</$key2>";
+                            } elseif($innerValue == 'B') {
+                                $xmlString .= "<$key2 code='21'>$innerValue</$key2>";
+                            } else {
+                                $xmlString .= "<$key2 code='11'>$innerValue</$key2>";
+                            }
+
+                        } elseif ($key2 == 'mphone_nos') {
+                            if (!empty($innerValue)) {
+                                $xmlString .= "<$key2>";
+                                foreach ($innerValue as $key3 => $nestedInnerValue) {
+                                    $xmlString .= "<$key3>$nestedInnerValue</$key3>";
+                                }
+                                $xmlString .= "</$key2>";
+                            } else {
+                                $xmlString .= "<$key2><mphone_no/></$key2>";
+                            }
+                        } elseif ($key2 == 'purpose') {
+                            $xmlString .= "<$key2 code='200'>$innerValue</$key2>";
+                        } else {
+                            $xmlString .= "<$key2>$innerValue</$key2>";
+                        }
+
+                    } else {
+                        $xmlString .= "<$key2/>";
+                    }
+                }
+                $xmlString .= "</$key>";
+            } else {
+                if (!empty($value)) {
+                    $xmlString .= "<$key>$value</$key>";
+                } else {
+                    $xmlString .= "<$key/>";
+                }
+
+            }
+
             if ($key == 'InterestParties') {
                 $xmlString .= "<$key>";
                 foreach ($value as $key3 => $innerValue2) {
