@@ -42,7 +42,14 @@ class CTOSApi
                     if (!empty($innerValue)) {
 
                         if ($key2 == 'type') {
-                            $xmlString .= "<$key2 code='11'>$innerValue</$key2>";
+                            if($innerValue == 'C') {
+                                $xmlString .= "<$key2 code='24'>$innerValue</$key2>";
+                            } elseif($innerValue == 'B') {
+                                $xmlString .= "<$key2 code='21'>$innerValue</$key2>";
+                            } else {
+                                $xmlString .= "<$key2 code='11'>$innerValue</$key2>";
+                            }
+
                         } elseif ($key2 == 'mphone_nos') {
                             if (!empty($innerValue)) {
                                 $xmlString .= "<$key2>";
