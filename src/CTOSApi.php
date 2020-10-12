@@ -161,7 +161,8 @@ class CTOSApi
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_USERPWD, $this->username . ":" . $this->password);
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 360000);
+        curl_setopt($ch, CURLOPT_ACCEPTTIMEOUT_MS, 360000);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $requestXML); // the SOAP request
         curl_setopt($ch, CURLOPT_HTTPHEADER, $this->Headers($requestXML));
